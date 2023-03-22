@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Dog } from "@happy-tails/shared";
 
 function App() {
+  const [dog, setDog] = useState<Dog>({
+    id: "1",
+    name: "Fido",
+    description: "A good dog",
+  });
+
   return (
     <div className="App">
       <header className="App-header">

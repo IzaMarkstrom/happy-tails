@@ -1,0 +1,25 @@
+{
+  "name": "@happy-tails/shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IzaMarkstrom/happy-tails.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IzaMarkstrom/happy-tails/issues"
+  },
+  "homepage": "https://github.com/IzaMarkstrom/happy-tails#readme"
+}
