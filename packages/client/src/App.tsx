@@ -6,8 +6,14 @@ import { Dog } from "@happy-tails/shared";
 function App() {
   const [dog, setDog] = useState<Dog>({
     id: "1",
-    name: "Fido",
-    description: "A good dog",
+    name: "Hugo",
+    age: 2,
+    description: "A good boy who needs a forever home",
+    category: ["small dog", "short hair"],
+    gender: "Male",
+    breed: "Jack Russel",
+    adoptionPrice: 6500,
+    neutered: "No"
   });
 
   return (
@@ -24,6 +30,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          <h1>{dog.name}</h1>
         </a>
       </header>
     </div>
