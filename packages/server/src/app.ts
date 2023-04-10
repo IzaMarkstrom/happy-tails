@@ -10,7 +10,7 @@ const app: Application = express();
 app.use(cors());
 app.use(json());
 
-const port: number = parseInt(process.env.SERVER_PORT || "3002");
+const port: number = parseInt(process.env.SERVER_PORT || "4000");
 
 // image will upload to uploads folder locally, not to db yet
 const storage = multer.diskStorage({
