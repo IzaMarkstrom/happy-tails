@@ -7,10 +7,12 @@ export default function Header() {
       bgImage="url('https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80')"
       bgPosition="center"
       bgRepeat="no-repeat"
+      bgSize="cover"
       w="100%"
       h="100vh"
       p={4}
       color="white"
+      backgroundAttachment="fixed"
     >
       <Box
         display="flex"
