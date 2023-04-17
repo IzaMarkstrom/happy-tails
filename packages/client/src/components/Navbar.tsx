@@ -18,17 +18,16 @@ export default function Navbar() {
           </Heading>
         </Box>
         <Spacer />
-        <Flex>
-          <div>Item 1 </div>
-          <div>Item 2 </div>
-          <div>Item 3 </div>
-          <div>Item 4 </div>
+        <Flex alignItems="flex-end" gap="2">
+          <Button bgColor="white">Hundarna</Button>
+          <Button bgColor="white">Om oss</Button>
+          <Button bgColor="white">Stöd</Button>
         </Flex>
-        <Spacer />
+        {/* <Spacer />
         <ButtonGroup gap="2" size="sm">
           <Button colorScheme="teal">Sign Up</Button>
           <Button colorScheme="teal">Log in</Button>
-        </ButtonGroup>
+        </ButtonGroup> */}
       </Flex>
     </Box>
   );
