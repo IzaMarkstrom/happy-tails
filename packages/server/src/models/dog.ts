@@ -1,7 +1,7 @@
 import { Dog } from '@happy-tails/shared';
 import { Schema, model } from 'mongoose';
 
-const Dog = new Schema<Dog>({
+const DogSchema = new Schema({
     name: String,
     age: Number,
     description: String,
@@ -13,4 +13,10 @@ const Dog = new Schema<Dog>({
     mainImage: { url: String, alt: String }
 });
 
-const DogModel = model<Dog>('Dog', Dog);
+const DogModel = model<Dog>('Dog', DogSchema);
+
+const loadAllDogs = async (): Promise<Dog[]> => {
+    return await DogModel.find({}).exec();
+}
+
+export { loadAllDogs };
