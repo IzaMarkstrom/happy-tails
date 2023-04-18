@@ -16,7 +16,7 @@ const DogSchema = new Schema({
 const DogModel = model<Dog>('Dog', DogSchema);
 
 const loadAllDogs = async (): Promise<Dog[]> => {
-    return await DogModel.find({}).exec();
-}
+    return await DogModel.find({}). exec();
+  };
 
 export { loadAllDogs };
