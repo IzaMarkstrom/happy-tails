@@ -18,7 +18,7 @@ export default function Navbar() {
     <Box>
       <Flex minWidth="max-content" alignItems="center" gap="2" p="2">
         <Box p="2">
-          <Heading size="lg">
+          <Heading size="lg" color="brand.dark">
             <a href="/">Happy Tails 🐾</a>
           </Heading>
         </Box>
@@ -28,9 +28,15 @@ export default function Navbar() {
           gap="2"
           display={{ base: "none", md: "flex" }}
         >
-          <Button bgColor="white">Hundarna</Button>
-          <Button bgColor="white">Om oss</Button>
-          <Button bgColor="white">Stöd</Button>
+          <Button bg="white" color="brand.beige">
+            Hundarna
+          </Button>
+          <Button bg="white" color="brand.beige">
+            Om oss
+          </Button>
+          <Button bg="white" color="brand.beige">
+            Stöd
+          </Button>
         </Flex>
         <IconButton
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}

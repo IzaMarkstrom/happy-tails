@@ -3,7 +3,7 @@ import { Box, Text, Button } from "@chakra-ui/react";
 
 export default function About() {
   return (
-    <Box bgColor="#baa4a6" w="100%" h="100vh" p={4} color="white">
+    <Box bgColor="brand.primary" w="100%" h="100vh" p={4} color="white">
       <Box
         display="flex"
         alignItems="center"
@@ -22,7 +22,7 @@ export default function About() {
           allt för att varje hund ska få det den behöver. Organisationen bedrivs
           ideelt och alla gåvor gör skillnad!{" "}
         </Text>
-        <Button color="#baa4a6">Skänk en gåva</Button>
+        <Button color="brand.primary">Skänk en gåva</Button>
       </Box>
     </Box>
   );
