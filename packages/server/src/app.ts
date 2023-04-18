@@ -1,6 +1,6 @@
 import express, { Application, json, Request, Response } from "express";
 import cors from "cors";
-import dog from "./routes/dogs";
+import dogRouter from "./routes/dogRoute";
 import dotenv from "dotenv";
 import { setupMongoDb } from "./models/common";
 const multer = require("multer");
@@ -28,10 +28,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.use("/uploads", express.static("./uploads"));
 
-app.use("/dogs", dog);
+app.use("/dogRoute", dogRouter);
 
 const MONGO_URL: string =
-  process.env.MONGO_URL || "mongodb://localhost:27017/happytails";
+  process.env.MONGO_URL || "mongodb://localhost:27017/happyTails";
 
 app.listen(port, async function () {
   await setupMongoDb(MONGO_URL);
