@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Dog } from "@happy-tails/shared";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 function App() {
   const [dog, setDog] = useState<Dog>({
@@ -13,26 +16,15 @@ function App() {
     gender: "Male",
     breed: "Jack Russel",
     adoptionPrice: 6500,
-    neutered: "No"
+    neutered: "No",
   });
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          <h1>{dog.name}</h1>
-        </a>
-      </header>
+      <Navbar />
+      <Header />
+      <About />
+      <Footer />
     </div>
   );
 }
