@@ -1,29 +1,20 @@
-import React, { useState } from "react";
 import "./App.css";
-import { Dog } from "@happy-tails/shared";
+import React from 'react'
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
-import About from "./components/About";
+import ApplicationPage from "./pages/ApplicationPage";
+import StartPage from "./pages/StartPage";
 
 function App() {
-  const [dog, setDog] = useState<Dog>({
-    id: "1",
-    name: "Hugo",
-    age: 2,
-    description: "A good boy who needs a forever home",
-    category: ["small dog", "short hair"],
-    gender: "Male",
-    breed: "Jack Russel",
-    adoptionPrice: 6500,
-    neutered: "No",
-  });
 
   return (
     <div className="App">
       <Navbar />
-      <Header />
-      <About />
+        <Routes>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/application-form" element={<ApplicationPage />} />
+        </Routes>
       <Footer />
     </div>
   );
