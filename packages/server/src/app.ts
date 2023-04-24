@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.use("/uploads", express.static("./uploads"));
 
-app.use("/dogRoute", dogRouter);
+app.use("/api/dog", dogRouter);
 
 const MONGO_URL: string =
   process.env.MONGO_URL || "mongodb://localhost:27017/happyTails";
