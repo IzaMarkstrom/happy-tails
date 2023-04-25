@@ -1,5 +1,5 @@
 import { Dog } from "@happy-tails/shared";
-import { loadAllDogs, loadSingleDog } from "../models/dog";
+import { loadAllDogs, loadSingleDog, saveDog } from "../models/dog";
 
 const loadDogs = async (): Promise<Dog[]> => {
   return await loadAllDogs();
@@ -13,4 +13,9 @@ const loadDogById = async (id: string): Promise<Dog> => {
   return dog;
 };
 
-export { loadDogs, loadDogById };
+const saveNewDog = async (dog: Dog): Promise<Dog[]> => {
+  await saveDog(dog);
+  return loadAllDogs();
+};
+
+export { loadDogs, loadDogById, saveNewDog };

@@ -23,4 +23,9 @@ const loadSingleDog = async (id: string): Promise<Dog | null> => {
   return DogModel.findById(id).exec();
 };
 
-export { loadAllDogs, loadSingleDog };
+const saveDog = async (dog: Dog): Promise<Dog> => {
+  const newDog = new DogModel(dog);
+  return newDog.save();
+};
+
+export { loadAllDogs, loadSingleDog, saveDog };
