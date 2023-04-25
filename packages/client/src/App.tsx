@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import ListPage from "./ListPage";
 
 function App() {
   const [dog, setDog] = useState<Dog>({
@@ -25,6 +26,7 @@ function App() {
       <Header />
       <About />
       <Footer />
+      <ListPage />
     </div>
   );
 }
