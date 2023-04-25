@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
-import CardItem from "./components/CardItem";
+import CardItem from "../components/CardItem";
 import { SimpleGrid } from "@chakra-ui/react";
 
 export default function ListPage() {
@@ -28,8 +28,9 @@ export default function ListPage() {
   return (
     <div>
       <SimpleGrid
+        p={8}
         spacing={4}
-        templateColumns="repeat(auto-fill, minmax(400px, 1fr))"
+        templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
       >
         {data &&
           data.map((dog) => {
