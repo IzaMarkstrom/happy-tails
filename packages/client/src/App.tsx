@@ -25,8 +25,8 @@ function App() {
       <Navbar />
       <Header />
       <About />
-      <Footer />
       <ListPage />
+      <Footer />
     </div>
   );
 }
