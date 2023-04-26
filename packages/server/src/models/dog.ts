@@ -23,9 +23,13 @@ const loadSingleDog = async (id: string): Promise<Dog | null> => {
   return DogModel.findById(id).exec();
 };
 
-const saveDog = async (dog: Dog): Promise<Dog> => {
+const saveOne = async (dog: Dog): Promise<Dog> => {
   const newDog = new DogModel(dog);
   return newDog.save();
 };
 
-export { loadAllDogs, loadSingleDog, saveDog };
+const deleteOne = async (id: string): Promise<Dog | null> => {
+  return DogModel.findByIdAndDelete(id).exec();
+};
+
+export { loadAllDogs, loadSingleDog, saveOne, deleteOne };
