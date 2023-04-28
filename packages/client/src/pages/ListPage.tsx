@@ -1,18 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
 import CardItem from "../components/CardItem";
 import { SimpleGrid } from "@chakra-ui/react";
 
-export default function ListPage() {
-  axios.defaults.baseURL =
-    process.env.REACT_APP_TODO_API || "http://localhost:4000/api";
+axios.defaults.baseURL =
+  process.env.REACT_APP_TODO_API || "http://localhost:4000/api";
 
-  const [data, setData] = useState<Dog[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+interface State {
+  data: Dog[];
+  isLoading: boolean;
+}
+
+type Action =
+  | { type: "SET_DATA"; payload: Dog[] }
+  | { type: "SET_LOADING"; payload: boolean };
+
+const initialState: State = {
+  data: [],
+  isLoading: false,
+};
+
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case "SET_DATA":
+      return { ...state, data: action.payload };
+    case "SET_LOADING":
+      return { ...state, isLoading: action.payload };
+    default:
+      return state;
+  }
+};
+
+export default function ListPage() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { data, isLoading } = state;
 
   useEffect(() => {
-    setIsLoading(true);
+    dispatch({ type: "SET_LOADING", payload: true });
     fetchData();
   }, []);
 
@@ -20,8 +45,8 @@ export default function ListPage() {
     axios
       .get("/dog")
       .then((res) => {
-        setData(res.data);
-        setIsLoading(false);
+        dispatch({ type: "SET_DATA", payload: res.data });
+        dispatch({ type: "SET_LOADING", payload: false });
       })
       .catch((err) => {
         console.log(err);
