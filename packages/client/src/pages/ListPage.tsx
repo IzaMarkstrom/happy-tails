@@ -9,8 +9,10 @@ export default function ListPage() {
     process.env.REACT_APP_TODO_API || "http://localhost:4000/api";
 
   const [data, setData] = useState<Dog[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, []);
 
@@ -19,6 +21,7 @@ export default function ListPage() {
       .get("/dog")
       .then((res) => {
         setData(res.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -27,16 +30,20 @@ export default function ListPage() {
 
   return (
     <div>
-      <SimpleGrid
-        p={8}
-        spacing={4}
-        templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-      >
-        {data &&
-          data.map((dog) => {
-            return <CardItem dog={dog} />;
-          })}
-      </SimpleGrid>
+      {isLoading ? (
+        <div>Loading ...</div>
+      ) : (
+        <SimpleGrid
+          p={8}
+          spacing={4}
+          templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+        >
+          {data &&
+            data.map((dog) => {
+              return <CardItem dog={dog} />;
+            })}
+        </SimpleGrid>
+      )}
     </div>
   );
 }
