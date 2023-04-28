@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ApplicationPage from "./pages/ApplicationPage";
 import StartPage from "./pages/StartPage";
+import ListPage from "./pages/ListPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/application-form" element={<ApplicationPage />} />
+        <Route path="/dogs" element={<ListPage />} />
       </Routes>
       <Footer />
     </div>

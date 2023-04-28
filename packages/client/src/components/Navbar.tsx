@@ -29,7 +29,7 @@ export default function Navbar() {
           display={{ base: "none", md: "flex" }}
         >
           <Button bg="white" color="brand.beige">
-            Hundarna
+            <a href="/dogs">Hundarna</a>
           </Button>
           <Button bg="white" color="brand.beige">
             Om oss
