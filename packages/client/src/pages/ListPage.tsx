@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer, useCallback } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
 import CardItem from "../components/CardItem";
@@ -46,7 +46,8 @@ export default function ListPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [url, setUrl] = useState(`${API_ENDPOINT}/dog/search/${searchTerm}`);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
+    if (!searchTerm) return;
     dispatch({ type: "FETCH_INIT", payload: true });
     try {
       const response = await axios.get(url);
@@ -54,12 +55,11 @@ export default function ListPage() {
     } catch (err) {
       dispatch({ type: "FETCH_FAILURE", payload: true });
     }
-  };
+  }, [url]);
 
   useEffect(() => {
-    setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
     fetchData();
-  }, [searchTerm]);
+  }, [fetchData]);
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -67,9 +67,9 @@ export default function ListPage() {
   };
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    setUrl(`/dog/search/${searchTerm}`);
     event.preventDefault();
     console.log("submitted", searchTerm);
+    setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
   };
 
   return (
