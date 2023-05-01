@@ -15,3 +15,11 @@ code {
 .dog-card :hover {
   transform: scale(0.75);
 }
+
+.search input {
+  outline: auto;
+}
+
+.search button {
+  background-color: antiquewhite;
+}
