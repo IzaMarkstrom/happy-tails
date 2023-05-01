@@ -1,6 +1,10 @@
 import { Dog } from "@happy-tails/shared";
 import express, { Request, Response } from "express";
-import { loadDogs, loadDogById } from "../controllers/dogController";
+import {
+  loadDogs,
+  loadDogById,
+  getSearchedDog,
+} from "../controllers/dogController";
 
 const dogRouter = express.Router();
 
@@ -16,6 +20,15 @@ dogRouter.get("/", async (req: Request, res: Response) => {
 dogRouter.get("/:id", async (req: Request, res: Response) => {
   try {
     res.status(200).send(await loadDogById(req.params.id));
+  } catch (error) {
+    res.status(500).send("Something went went wrong");
+  }
+});
+
+//get dog by search term
+dogRouter.get("/search/:searchTerm", async (req: Request, res: Response) => {
+  try {
+    res.status(200).send(await getSearchedDog(req.params.searchTerm));
   } catch (error) {
     res.status(500).send("Something went went wrong");
   }

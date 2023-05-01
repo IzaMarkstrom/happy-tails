@@ -23,4 +23,8 @@ const loadSingleDog = async (id: string): Promise<Dog | null> => {
   return DogModel.findById(id).exec();
 };
 
-export { loadAllDogs, loadSingleDog };
+const searchDog = async (searchTerm: string): Promise<Dog[]> => {
+  return DogModel.find({ name: { $regex: searchTerm, $options: "i" } }).exec();
+};
+
+export { loadAllDogs, loadSingleDog, searchDog };

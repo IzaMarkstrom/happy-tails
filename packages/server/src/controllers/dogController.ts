@@ -1,5 +1,5 @@
 import { Dog } from "@happy-tails/shared";
-import { loadAllDogs, loadSingleDog } from "../models/dog";
+import { loadAllDogs, loadSingleDog, searchDog } from "../models/dog";
 
 const loadDogs = async (): Promise<Dog[]> => {
   return await loadAllDogs();
@@ -13,4 +13,12 @@ const loadDogById = async (id: string): Promise<Dog> => {
   return dog;
 };
 
-export { loadDogs, loadDogById };
+const getSearchedDog = async (searchTerm: string): Promise<Dog[]> => {
+  const searchResult = await searchDog(searchTerm);
+  if (!searchResult) {
+    throw new Error("No dogs found");
+  }
+  return searchResult;
+};
+
+export { loadDogs, loadDogById, getSearchedDog };
