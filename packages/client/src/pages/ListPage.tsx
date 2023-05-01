@@ -10,34 +10,41 @@ axios.defaults.baseURL =
 interface State {
   data: Dog[];
   isLoading: boolean;
+  isError: boolean;
 }
 
 type Action =
-  | { type: "SET_DATA"; payload: Dog[] }
-  | { type: "SET_LOADING"; payload: boolean };
-
-const initialState: State = {
-  data: [],
-  isLoading: false,
-};
+  | { type: "FETCH_INIT"; payload: boolean }
+  | { type: "FETCH_SUCCESS"; payload: Dog[] }
+  | { type: "FETCH_FAILURE"; payload: boolean };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "SET_DATA":
-      return { ...state, data: action.payload };
-    case "SET_LOADING":
-      return { ...state, isLoading: action.payload };
+    case "FETCH_INIT":
+      return { ...state, isLoading: true, isError: false };
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload,
+      };
+    case "FETCH_FAILURE":
+      return { ...state, isLoading: false, isError: true };
     default:
       return state;
   }
 };
 
 export default function ListPage() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { data, isLoading } = state;
+  const [state, dispatch] = useReducer(reducer, {
+    data: [],
+    isLoading: false,
+    isError: false,
+  });
 
   useEffect(() => {
-    dispatch({ type: "SET_LOADING", payload: true });
+    dispatch({ type: "FETCH_INIT", payload: true });
     fetchData();
   }, []);
 
@@ -45,17 +52,17 @@ export default function ListPage() {
     axios
       .get("/dog")
       .then((res) => {
-        dispatch({ type: "SET_DATA", payload: res.data });
-        dispatch({ type: "SET_LOADING", payload: false });
+        dispatch({ type: "FETCH_SUCCESS", payload: res.data });
       })
       .catch((err) => {
-        console.log(err);
+        dispatch({ type: "FETCH_FAILURE", payload: true });
       });
   };
 
   return (
     <div>
-      {isLoading ? (
+      {state.isError && <div>Something went wrong ...</div>}
+      {state.isLoading ? (
         <div>Loading ...</div>
       ) : (
         <SimpleGrid
@@ -63,8 +70,8 @@ export default function ListPage() {
           spacing={4}
           templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
         >
-          {data &&
-            data.map((dog) => {
+          {state.data &&
+            state.data.map((dog) => {
               return <CardItem dog={dog} />;
             })}
         </SimpleGrid>
