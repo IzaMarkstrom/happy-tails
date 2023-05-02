@@ -1,5 +1,11 @@
 import { Dog } from "@happy-tails/shared";
-import { loadAllDogs, loadSingleDog, searchDog } from "../models/dog";
+import {
+  loadAllDogs,
+  loadSingleDog,
+  saveOne,
+  deleteOne,
+  searchDog,
+} from "../models/dog";
 
 const loadDogs = async (): Promise<Dog[]> => {
   return await loadAllDogs();
@@ -13,6 +19,15 @@ const loadDogById = async (id: string): Promise<Dog> => {
   return dog;
 };
 
+const saveNewDog = async (dog: Dog): Promise<Dog[]> => {
+  await saveOne(dog);
+  return loadAllDogs();
+};
+
+const deleteDog = async (id: string): Promise<Dog | null> => {
+  return deleteOne(id);
+};
+
 const getSearchedDog = async (searchTerm: string): Promise<Dog[]> => {
   const searchResult = await searchDog(searchTerm);
   if (!searchResult) {
@@ -21,4 +36,4 @@ const getSearchedDog = async (searchTerm: string): Promise<Dog[]> => {
   return searchResult;
 };
 
-export { loadDogs, loadDogById, getSearchedDog };
+export { loadDogs, loadDogById, saveNewDog, deleteDog, getSearchedDog };

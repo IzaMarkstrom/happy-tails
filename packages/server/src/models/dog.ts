@@ -23,8 +23,17 @@ const loadSingleDog = async (id: string): Promise<Dog | null> => {
   return DogModel.findById(id).exec();
 };
 
+const saveOne = async (dog: Dog): Promise<Dog> => {
+  const newDog = new DogModel(dog);
+  return newDog.save();
+};
+
+const deleteOne = async (id: string): Promise<Dog | null> => {
+  return DogModel.findByIdAndDelete(id).exec();
+};
+
 const searchDog = async (searchTerm: string): Promise<Dog[]> => {
   return DogModel.find({ name: { $regex: searchTerm, $options: "i" } }).exec();
 };
 
-export { loadAllDogs, loadSingleDog, searchDog };
+export { loadAllDogs, loadSingleDog, saveOne, deleteOne, searchDog };
