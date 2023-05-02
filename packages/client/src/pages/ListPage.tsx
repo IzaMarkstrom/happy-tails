@@ -2,10 +2,10 @@ import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
 import CardItem from "../components/CardItem";
-import { SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid, Box } from "@chakra-ui/react";
+import Search from "../components/Search";
 
-axios.defaults.baseURL =
-  process.env.REACT_APP_TODO_API || "http://localhost:4000/api";
+const API_ENDPOINT = "http://localhost:4000/api";
 
 interface State {
   data: Dog[];
@@ -16,7 +16,8 @@ interface State {
 type Action =
   | { type: "FETCH_INIT"; payload: boolean }
   | { type: "FETCH_SUCCESS"; payload: Dog[] }
-  | { type: "FETCH_FAILURE"; payload: boolean };
+  | { type: "FETCH_FAILURE"; payload: boolean }
+  | { type: "CLEAR" };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -31,6 +32,8 @@ const reducer = (state: State, action: Action): State => {
       };
     case "FETCH_FAILURE":
       return { ...state, isLoading: false, isError: true };
+    case "CLEAR":
+      return { ...state, isLoading: false, isError: false, data: [] };
     default:
       return state;
   }
@@ -43,24 +46,47 @@ export default function ListPage() {
     isError: false,
   });
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_INIT", payload: true });
-    fetchData();
-  }, []);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [url, setUrl] = useState(`${API_ENDPOINT}/dog/search/${searchTerm}`);
 
-  const fetchData = () => {
-    axios
-      .get("/dog")
-      .then((res) => {
-        dispatch({ type: "FETCH_SUCCESS", payload: res.data });
-      })
-      .catch((err) => {
-        dispatch({ type: "FETCH_FAILURE", payload: true });
-      });
+  const fetchData = async () => {
+    if (!searchTerm) return;
+    dispatch({ type: "FETCH_INIT", payload: true });
+    try {
+      const response = await axios.get(url);
+      dispatch({ type: "FETCH_SUCCESS", payload: response.data });
+    } catch (err) {
+      dispatch({ type: "FETCH_FAILURE", payload: true });
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [url]);
+
+  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
+  };
+
+  const clearResults = () => {
+    dispatch({ type: "CLEAR" });
   };
 
   return (
-    <div>
+    <Box height="100vh">
+      <Search
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onSearchInput={handleSearchInput}
+        onSearchSubmit={handleSearchSubmit}
+        onClick={clearResults}
+      />
+
       {state.isError && <div>Something went wrong ...</div>}
       {state.isLoading ? (
         <div>Loading ...</div>
@@ -76,6 +102,6 @@ export default function ListPage() {
             })}
         </SimpleGrid>
       )}
-    </div>
+    </Box>
   );
 }

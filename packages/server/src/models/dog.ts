@@ -32,4 +32,8 @@ const deleteOne = async (id: string): Promise<Dog | null> => {
   return DogModel.findByIdAndDelete(id).exec();
 };
 
-export { loadAllDogs, loadSingleDog, saveOne, deleteOne };
+const searchDog = async (searchTerm: string): Promise<Dog[]> => {
+  return DogModel.find({ name: { $regex: searchTerm, $options: "i" } }).exec();
+};
+
+export { loadAllDogs, loadSingleDog, saveOne, deleteOne, searchDog };
