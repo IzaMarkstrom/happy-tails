@@ -1,31 +1,34 @@
 import React from 'react'
-import { Box, Tabs, TabList, TabPanels, Tab, TabPanel, Text } from '@chakra-ui/react'
+import { Box, Tabs, TabList, TabPanels, Tab, TabPanel, Text, useMediaQuery } from '@chakra-ui/react'
 import DonationDetails from '../components/DonationDetails'
 
 
 export default function DonationPage() {
+    const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
     <>
     <Box  bgColor="brand.primary" w="100%" h="100vh" p={4} color="white" display="flex" justifyContent="center">
-        <Box w="70%" pt={10}>
+        <Box w={isMobile ? "100%" : "70%"} pt={isMobile ? 2 : 10}>
             <Tabs isFitted variant='enclosed' align="center">
                 <TabList>
-                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize="2xl">Single</Tab>
-                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize="2xl">Monthly</Tab>
+                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "l" : "2xl"}>Single</Tab>
+                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "l" : "2xl"}>Monthly</Tab>
                 </TabList>
 
                 <TabPanels>
                     <TabPanel>
-                        <Box mt={10}>
-                            <Text fontSize="2xl" fontWeight="bold" pb={10}>
-                                Donera en gång och hjälp vår organisation. <br /> 
-                                Hur mycket skulle du vilja donera till vår organisation?
-                            </Text>
+                        <Box mt={1}>
+                        { isMobile ? <Text fontSize="l" fontWeight="bold" pb={5}>
+                                Hur mycket skulle du vilja donera till Happy Tails?
+                            </Text> : <Text fontSize="2xl" fontWeight="bold" pb={10}>
+                                Hur mycket skulle du vilja donera till Happy Tails?
+                                </Text>}
                         <Tabs isFitted variant='enclosed' align="center">
                             <TabList>
-                                <Tab _selected={{ color: 'brand.dark', bg: 'white' }}>50 SEK</Tab>
-                                <Tab _selected={{ color: 'brand.dark', bg: 'white' }}>100 SEK</Tab>
-                                <Tab _selected={{ color: 'brand.dark', bg: 'white' }}>500 SEK</Tab>
+                                <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>50 SEK</Tab>
+                                <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>100 SEK</Tab>
+                                <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>500 SEK</Tab>
                             </TabList>
 
                             <TabPanels>
@@ -50,16 +53,17 @@ export default function DonationPage() {
                     </TabPanel>
 
                     <TabPanel>
-                        <Box mt={10}>
-                            <Text fontSize="2xl" fontWeight="bold" pb={10}>
-                                Bli månadsgivare och hjälp vår organisation. <br /> 
-                                Hur mycket skulle du vilja donera till vår organisation?
-                            </Text>
+                        <Box mt={1}>
+                            { isMobile ? <Text fontSize="l" fontWeight="bold" pb={5}>
+                                Hur mycket skulle du vilja donera varje månad till Happy Tails?
+                            </Text> : <Text fontSize="2xl" fontWeight="bold" pb={10}>
+                                Hur mycket skulle du vilja donera varje månad till Happy Tails?
+                            </Text>}
                             <Tabs isFitted variant='enclosed' align="center">
                                 <TabList>
-                                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }}>50 SEK</Tab>
-                                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }}>100 SEK</Tab>
-                                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }}>500 SEK</Tab>
+                                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>50 SEK</Tab>
+                                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>100 SEK</Tab>
+                                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>500 SEK</Tab>
                                 </TabList>
 
                                 <TabPanels>
