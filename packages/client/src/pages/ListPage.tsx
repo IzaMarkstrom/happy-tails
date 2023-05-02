@@ -46,7 +46,7 @@ export default function ListPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [url, setUrl] = useState(`${API_ENDPOINT}/dog/search/${searchTerm}`);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     if (!searchTerm) return;
     dispatch({ type: "FETCH_INIT", payload: true });
     try {
@@ -55,11 +55,11 @@ export default function ListPage() {
     } catch (err) {
       dispatch({ type: "FETCH_FAILURE", payload: true });
     }
-  }, [url]);
+  };
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [url]);
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
