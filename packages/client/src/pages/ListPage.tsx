@@ -16,7 +16,8 @@ interface State {
 type Action =
   | { type: "FETCH_INIT"; payload: boolean }
   | { type: "FETCH_SUCCESS"; payload: Dog[] }
-  | { type: "FETCH_FAILURE"; payload: boolean };
+  | { type: "FETCH_FAILURE"; payload: boolean }
+  | { type: "CLEAR" };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -31,6 +32,8 @@ const reducer = (state: State, action: Action): State => {
       };
     case "FETCH_FAILURE":
       return { ...state, isLoading: false, isError: true };
+    case "CLEAR":
+      return { ...state, isLoading: false, isError: false, data: [] };
     default:
       return state;
   }
@@ -72,6 +75,10 @@ export default function ListPage() {
     setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
   };
 
+  const clearResults = () => {
+    dispatch({ type: "CLEAR" });
+  };
+
   return (
     <div>
       <Search
@@ -79,6 +86,7 @@ export default function ListPage() {
         setSearchTerm={setSearchTerm}
         onSearchInput={handleSearchInput}
         onSearchSubmit={handleSearchSubmit}
+        onClick={clearResults}
       />
 
       {state.isError && <div>Something went wrong ...</div>}
