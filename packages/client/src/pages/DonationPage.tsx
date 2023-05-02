@@ -19,11 +19,9 @@ export default function DonationPage() {
                 <TabPanels>
                     <TabPanel>
                         <Box mt={1}>
-                        { isMobile ? <Text fontSize="l" fontWeight="bold" pb={5}>
+                        <Text fontSize="l" fontWeight="bold" pb={isMobile ? 2 : 10}>
                                 Hur mycket skulle du vilja donera till Happy Tails?
-                            </Text> : <Text fontSize="2xl" fontWeight="bold" pb={10}>
-                                Hur mycket skulle du vilja donera till Happy Tails?
-                                </Text>}
+                            </Text>
                         <Tabs isFitted variant='enclosed' align="center">
                             <TabList>
                                 <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>50 SEK</Tab>
@@ -33,17 +31,17 @@ export default function DonationPage() {
 
                             <TabPanels>
                                 <TabPanel>
-                                    <Box bg="white" color="black" p={4} borderRadius="10px">
+                                    <Box bg="white" color="black" p={isMobile ? 2 : 4} borderRadius="10px">
                                         <DonationDetails value={50} />
                                     </Box>
                                 </TabPanel>
                                 <TabPanel>
-                                    <Box bg="white" color="black" p={4} borderRadius="10px">
+                                    <Box bg="white" color="black" p={isMobile ? 2 : 4} borderRadius="10px">
                                         <DonationDetails value={100} />
                                     </Box>
                                 </TabPanel>
                                 <TabPanel>
-                                    <Box bg="white" color="black" p={4} borderRadius="10px">
+                                    <Box bg="white" color="black" p={isMobile ? 2 : 4} borderRadius="10px">
                                         <DonationDetails value={500} />
                                     </Box>
                                 </TabPanel>
@@ -54,11 +52,9 @@ export default function DonationPage() {
 
                     <TabPanel>
                         <Box mt={1}>
-                            { isMobile ? <Text fontSize="l" fontWeight="bold" pb={5}>
+                            <Text fontSize="l" fontWeight="bold" pb={isMobile ? 2 : 10}>
                                 Hur mycket skulle du vilja donera varje månad till Happy Tails?
-                            </Text> : <Text fontSize="2xl" fontWeight="bold" pb={10}>
-                                Hur mycket skulle du vilja donera varje månad till Happy Tails?
-                            </Text>}
+                            </Text>
                             <Tabs isFitted variant='enclosed' align="center">
                                 <TabList>
                                     <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "sm" : "l"}>50 SEK</Tab>
@@ -68,17 +64,17 @@ export default function DonationPage() {
 
                                 <TabPanels>
                                 <TabPanel>
-                                    <Box bg="white" color="black" p={4} borderRadius="10px">
+                                    <Box bg="white" color="black" p={isMobile ? 2 : 4} borderRadius="10px">
                                         <DonationDetails value={50} />
                                     </Box>
                                 </TabPanel>
                                 <TabPanel>
-                                    <Box bg="white" color="black" p={4} borderRadius="10px">
+                                    <Box bg="white" color="black" p={isMobile ? 2 : 4} borderRadius="10px">
                                         <DonationDetails value={100} />
                                     </Box>
                                 </TabPanel>
                                 <TabPanel>
-                                    <Box bg="white" color="black" p={4} borderRadius="10px">
+                                    <Box bg="white" color="black" p={isMobile ? 2 : 4} borderRadius="10px">
                                         <DonationDetails value={500} />
                                     </Box>
                                 </TabPanel>
