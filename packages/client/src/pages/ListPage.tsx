@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useReducer, useCallback } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
 import CardItem from "../components/CardItem";
-import { SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid, Box } from "@chakra-ui/react";
 import Search from "../components/Search";
 
 const API_ENDPOINT = "http://localhost:4000/api";
@@ -66,12 +66,10 @@ export default function ListPage() {
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
-    console.log("searchTerm", searchTerm);
   };
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("submitted", searchTerm);
     setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
   };
 
@@ -80,7 +78,7 @@ export default function ListPage() {
   };
 
   return (
-    <div>
+    <Box height="100vh">
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -104,6 +102,6 @@ export default function ListPage() {
             })}
         </SimpleGrid>
       )}
-    </div>
+    </Box>
   );
 }
