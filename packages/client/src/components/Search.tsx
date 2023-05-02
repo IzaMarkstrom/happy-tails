@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  Button,
+  InputGroup,
+  Input,
+  InputRightElement,
+  Box,
+} from "@chakra-ui/react";
 
 export default function Search({
   searchTerm,
@@ -14,12 +21,43 @@ export default function Search({
   onClick: () => void;
 }) {
   return (
-    <div className="search">
+    <Box
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+      justifyContent="center"
+      pt="4.5rem"
+    >
       <form onSubmit={onSearchSubmit}>
-        <input type="text" onChange={onSearchInput}></input>
-        <button type="submit">Search</button>
-        <button onClick={onClick}>clear</button>
+        <InputGroup size="md">
+          <Input
+            type="text"
+            onChange={onSearchInput}
+            pr="4.5rem"
+            placeholder="Sök efter en hund"
+            borderRadius="1px"
+          />
+          <InputRightElement width="4.5rem">
+            <Button
+              type="submit"
+              color="brand.primary"
+              size="md"
+              borderRadius="1px"
+              onClick={onClick}
+            >
+              Sök
+            </Button>
+            <Button
+              color="brand.primary"
+              size="md"
+              borderRadius="1px"
+              onClick={onClick}
+            >
+              X
+            </Button>
+          </InputRightElement>
+        </InputGroup>
       </form>
-    </div>
+    </Box>
   );
 }
