@@ -10,7 +10,7 @@ import {
 
 const dogRouter = express.Router();
 
-dogRouter.get("/", async (req: Request, res: Response) => {
+dogRouter.get("/search", async (req: Request, res: Response) => {
   try {
     res.status(200).send(await loadDogs());
   } catch (error) {

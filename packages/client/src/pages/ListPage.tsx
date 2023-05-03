@@ -42,7 +42,7 @@ const reducer = (state: State, action: Action): State => {
 export default function ListPage() {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
-    isLoading: false,
+    isLoading: true,
     isError: false,
   });
 
@@ -50,8 +50,8 @@ export default function ListPage() {
   const [url, setUrl] = useState(`${API_ENDPOINT}/dog/search/${searchTerm}`);
 
   const fetchData = async () => {
-    if (!searchTerm) return;
-    dispatch({ type: "FETCH_INIT", payload: true });
+    // if (!searchTerm) return;
+    // dispatch({ type: "FETCH_INIT", payload: true });
     try {
       const response = await axios.get(url);
       dispatch({ type: "FETCH_SUCCESS", payload: response.data });
@@ -78,7 +78,12 @@ export default function ListPage() {
   };
 
   return (
-    <Box height="100vh">
+    <Box
+      height="100vh"
+      alignItems="center"
+      flexDirection="column"
+      justifyContent="center"
+    >
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
