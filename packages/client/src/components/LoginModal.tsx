@@ -19,7 +19,7 @@ import {
   } from "@chakra-ui/react";
   import axios from "axios";
   import React, { useEffect, useState, useContext } from "react";
-//   import UserContext from "../context/UserContext";
+  import UserContext from "../context/UserContext";
   
   export default function LoginModal() {
     const [email, setEmail] = useState<string>("");
@@ -31,7 +31,7 @@ import {
     const [show, setShow] = React.useState(false);
     const handleClick = () => setShow(!show);
   
-    // const { setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
   
     const baseURL: string =
       process.env.REACT_APP_BASE_URL || "http://localhost:4000";
@@ -47,7 +47,7 @@ import {
         })
         .then((res) => {
           setIsLoggedIn(true);
-        //   setUser(res.data);
+          setUser(res.data);
         })
         .catch((error) => {
           console.log(error);
