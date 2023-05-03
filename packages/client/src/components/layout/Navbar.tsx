@@ -32,6 +32,9 @@ export default function Navbar() {
             <a href="/dogs">Hundarna</a>
           </Button>
           <Button bg="white" color="brand.beige">
+            <a href="/donation">Donation</a>
+          </Button>
+          <Button bg="white" color="brand.beige">
             Om oss
           </Button>
           <Button bg="white" color="brand.beige">
@@ -50,8 +53,11 @@ export default function Navbar() {
         <Box py="4" borderBottomWidth="1px">
           <VStack alignItems="flex-start" spacing="4">
             <Button bgColor="white" w="full">
-              Hundarna
+              <a href="/dogs">Hundarna</a>
             </Button>
+            <Button bgColor="white" w="full">
+              <a href="/donation">Donation</a>
+          </Button>
             <Button bgColor="white" w="full">
               Om oss
             </Button>
