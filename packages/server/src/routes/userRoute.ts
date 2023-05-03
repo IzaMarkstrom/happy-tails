@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { saveUser, getUserByEmail } from "../services/user-service";
+import { saveUser, getUserByEmail } from "../controllers/userController";
 import { authUser, generateToken, JwtRequest } from "../services/auth";
 import { UserItem } from "@happy-tails/shared";
 const { UserModel } = require("../models/user");
