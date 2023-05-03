@@ -27,28 +27,28 @@ Make sure you have the following software installed on your machine before runni
    git clone https://github.com/IzaMarkstrom/happy-tails.git
    ```
 
-1. Install dependencies
+2. Install dependencies
 
 ```bash
 cd happy-tails
 npm install
 ```
 
-1. Add an .env file and provide the necessary environment variables (MongoDB connection string, server port)
+3. Add an .env file and provide the necessary environment variables (MongoDB connection string, server port)
 
-1. Seed data to the database with the following script:
+4. Seed data to the database with the following script:
 
 ```bash
 mongosh --file initdb.js
 ```
 
-1. Run the backend with the following command:
+5. Run the backend with the following command:
 
 ```bash
 npm start -y -w packages/server
 ```
 
-1. Run the frontend with the following command:
+6. Run the frontend with the following command:
 
 ```bash
 npm start -y -w packages/client
