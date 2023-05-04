@@ -1,5 +1,5 @@
 export interface Dog {
-  id: string;
+  _id: string;
   name: string;
   age: number;
   description: string;
