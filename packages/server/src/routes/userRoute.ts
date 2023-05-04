@@ -38,6 +38,9 @@ userRouter.post(
   "/login",
   async (req: JwtRequest<UserItem>, res: Response<string>) => {
     const credentials = req.body;
+    if(!credentials.password){
+      res.status(403).send("No password provided");
+    }
 
     const userExists = await UserModel.findOne({
       email: credentials.email,
