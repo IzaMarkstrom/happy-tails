@@ -6,6 +6,7 @@ import {
   BreadcrumbLink,
   Link,
 } from "@chakra-ui/react";
+import LoginModal from "../LoginModal";
 
 export default function Footer() {
   return (
@@ -34,6 +35,8 @@ export default function Footer() {
               <BreadcrumbItem isCurrentPage>
                 <Link href="/admin">Admin</Link>
               </BreadcrumbItem>
+
+              <LoginModal />
             </Breadcrumb>
           </Box>
         </Flex>
