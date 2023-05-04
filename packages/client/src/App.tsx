@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<StartPage />} />
           <Route path="/application-form" element={<ApplicationPage />} />
           <Route path="/dogs" element={<ListPage />} />
-        <Route path="/donation" element={<DonationPage />} />
+          <Route path="/donation" element={<DonationPage />} />
         </Routes>
         <Footer />
       </div>

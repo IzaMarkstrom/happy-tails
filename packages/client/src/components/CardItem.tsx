@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../context/UserContext";
 import {
   Card,
   CardBody,
@@ -17,11 +18,26 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  Alert,
 } from "@chakra-ui/react";
 import { Dog } from "@happy-tails/shared";
 
-export default function CardItem({ dog }: { dog: Dog }) {
+export default function CardItem({
+  dog,
+  removeItem,
+}: {
+  dog: Dog;
+  removeItem: Function;
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [sucess, setSucess] = React.useState(false);
+  const { user } = useContext(UserContext);
+
+  const handleDelete = (_id: string) => {
+    console.log("delete", _id);
+    removeItem(dog._id);
+    setSucess(true);
+  };
   return (
     <>
       <Card maxW="sm">
@@ -37,7 +53,7 @@ export default function CardItem({ dog }: { dog: Dog }) {
           </Stack>
         </CardBody>
         <CardFooter>
-          <ButtonGroup spacing="2">
+          <ButtonGroup spacing="">
             <Button
               variant="solid"
               bg="brand.primary"
@@ -49,9 +65,25 @@ export default function CardItem({ dog }: { dog: Dog }) {
             <Button variant="ghost" color="brand.green">
               Anmäl intresse
             </Button>
+
+            {user && (
+              <Button
+                variant="solid"
+                color="brand.green"
+                onClick={() => handleDelete(dog._id)}
+              >
+                Ta bort
+              </Button>
+            )}
           </ButtonGroup>
         </CardFooter>
       </Card>
+
+      {sucess && (
+        <Text color="brand.green" mt="4">
+          Borttagen!
+        </Text>
+      )}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

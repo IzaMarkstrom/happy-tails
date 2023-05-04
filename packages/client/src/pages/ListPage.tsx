@@ -42,21 +42,27 @@ const reducer = (state: State, action: Action): State => {
 export default function ListPage() {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
-    isLoading: false,
+    isLoading: true,
     isError: false,
   });
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [url, setUrl] = useState(`${API_ENDPOINT}/dog/search/${searchTerm}`);
+  const [url, setUrl] = useState(`${API_ENDPOINT}/dog/${searchTerm}`);
 
   const fetchData = async () => {
-    if (!searchTerm) return;
-    dispatch({ type: "FETCH_INIT", payload: true });
     try {
       const response = await axios.get(url);
       dispatch({ type: "FETCH_SUCCESS", payload: response.data });
     } catch (err) {
       dispatch({ type: "FETCH_FAILURE", payload: true });
+    }
+  };
+
+  const removeItem = (_id: string) => {
+    try {
+      axios.delete(`${API_ENDPOINT}/dog/${_id}`);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -98,7 +104,7 @@ export default function ListPage() {
         >
           {state.data &&
             state.data.map((dog) => {
-              return <CardItem dog={dog} />;
+              return <CardItem dog={dog} removeItem={removeItem} />;
             })}
         </SimpleGrid>
       )}
