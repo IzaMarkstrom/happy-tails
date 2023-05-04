@@ -6,7 +6,6 @@ import StartPage from "./pages/StartPage";
 import ListPage from "./pages/ListPage";
 import DonationPage from "./pages/DonationPage";
 import { UserContextProvider } from "./context/UserContext";
-import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
           <Route path="/application-form" element={<ApplicationPage />} />
           <Route path="/dogs" element={<ListPage />} />
           <Route path="/donation" element={<DonationPage />} />
-          <Route path="/admin" element={<AdminPage />} />
         </Routes>
         <Footer />
       </div>
