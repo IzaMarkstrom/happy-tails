@@ -42,16 +42,14 @@ const reducer = (state: State, action: Action): State => {
 export default function ListPage() {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
-    isLoading: false,
+    isLoading: true,
     isError: false,
   });
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [url, setUrl] = useState(`${API_ENDPOINT}/dog/search/${searchTerm}`);
+  const [url, setUrl] = useState(`${API_ENDPOINT}/dog/${searchTerm}`);
 
   const fetchData = async () => {
-    if (!searchTerm) return;
-    dispatch({ type: "FETCH_INIT", payload: true });
     try {
       const response = await axios.get(url);
       dispatch({ type: "FETCH_SUCCESS", payload: response.data });
