@@ -5,19 +5,22 @@ import ApplicationPage from "./pages/ApplicationPage";
 import StartPage from "./pages/StartPage";
 import ListPage from "./pages/ListPage";
 import DonationPage from "./pages/DonationPage";
+import { UserContextProvider } from "./context/UserContext";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<StartPage />} />
-        <Route path="/application-form" element={<ApplicationPage />} />
-        <Route path="/dogs" element={<ListPage />} />
+    <UserContextProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/application-form" element={<ApplicationPage />} />
+          <Route path="/dogs" element={<ListPage />} />
         <Route path="/donation" element={<DonationPage />} />
-      </Routes>
-      <Footer />
-    </div>
+        </Routes>
+        <Footer />
+      </div>
+    </UserContextProvider>
   );
 }
 
