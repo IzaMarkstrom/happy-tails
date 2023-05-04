@@ -13,12 +13,14 @@ export default function Search({
   onSearchInput,
   onSearchSubmit,
   onClick,
+  handleClick
 }: {
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
   onSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onClick: () => void;
+  handleClick: (path: string) => void;
 }) {
   return (
     <Box
@@ -58,6 +60,32 @@ export default function Search({
           </InputRightElement>
         </InputGroup>
       </form>
+      <Box mt={4}>
+        <Button 
+          mr={2}
+          onClick={ () => handleClick("long-hair")}
+          >
+          Långhårig
+        </Button>
+        <Button 
+          mr={2}
+          onClick={ () => handleClick("short-hair")}
+          >
+          Korthårig
+        </Button>
+        <Button 
+          mr={2}
+          onClick={ () => handleClick("big-dog")}
+          >
+          Stor hund
+        </Button>
+        <Button 
+          mr={2}
+          onClick={ () => handleClick("small-dog")}
+          >
+          Liten hund
+        </Button>
+      </Box>
     </Box>
   );
 }

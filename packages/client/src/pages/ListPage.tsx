@@ -68,6 +68,17 @@ export default function ListPage() {
     setSearchTerm(event.target.value);
   };
 
+  const handleClick = (category: string) => {
+    setSearchTerm(category);
+    handleCategorySubmit();
+    // setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
+  };
+  
+  const handleCategorySubmit = () => {
+    setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
+    console.log(searchTerm)
+  };
+
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
@@ -85,6 +96,7 @@ export default function ListPage() {
         onSearchInput={handleSearchInput}
         onSearchSubmit={handleSearchSubmit}
         onClick={clearResults}
+        handleClick={handleClick}
       />
 
       {state.isError && <div>Something went wrong ...</div>}

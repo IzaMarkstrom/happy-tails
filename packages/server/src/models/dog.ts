@@ -33,7 +33,12 @@ const deleteOne = async (id: string): Promise<Dog | null> => {
 };
 
 const searchDog = async (searchTerm: string): Promise<Dog[]> => {
-  return DogModel.find({ name: { $regex: searchTerm, $options: "i" } }).exec();
+  return DogModel.find({ 
+    $or: [
+      { name: { $regex: searchTerm, $options: "i" } },
+      { category: {$elemMatch: { $eq: searchTerm}}}
+    ],
+  }).exec();
 };
 
 export { loadAllDogs, loadSingleDog, saveOne, deleteOne, searchDog };
