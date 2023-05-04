@@ -28,7 +28,7 @@ import {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [show, setShow] = React.useState(false);
+    const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
   
     const { setUser } = useContext(UserContext);
@@ -83,8 +83,8 @@ import {
         )}
   
         <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent color="white" bgColor="gray.500">
+          <ModalOverlay bgColor="whiteAlpha.500"/>
+          <ModalContent color="blackAlpha.900" bgColor="gray.300">
             <ModalHeader fontSize="3xl" textAlign="center" pt={8}>
               Enbart till för administratörer av denna hemsida.
             </ModalHeader>
@@ -102,7 +102,7 @@ import {
                 <FormLabel>Email</FormLabel>
                 <Input
                   focusBorderColor="white"
-                  placeholder="Email"
+                  placeholder="Skriv din email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
@@ -114,7 +114,7 @@ import {
                   <Input
                     pr="4.5rem"
                     type={show ? "text" : "password"}
-                    placeholder="Enter password"
+                    placeholder="Skriv ditt lösenord"
                     focusBorderColor="white"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
@@ -136,14 +136,14 @@ import {
             <ModalFooter color="black">
               <Button
                 variant="solid" 
-                bg="brand.primary" 
+                bg="#856a6c" 
                 color="white"
                 mr={3}
                 onClick={handleLogin}
               >
                 Logga in
               </Button>
-              <Button bgColor="gray.300" color="white" onClick={onClose}>
+              <Button bgColor="gray.500" color="white" onClick={onClose}>
                 Avbryt
               </Button>
             </ModalFooter>
