@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../context/UserContext";
 import {
   Card,
   CardBody,
@@ -30,6 +31,7 @@ export default function CardItem({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [sucess, setSucess] = React.useState(false);
+  const { user } = useContext(UserContext);
 
   const handleDelete = (_id: string) => {
     console.log("delete", _id);
@@ -63,13 +65,16 @@ export default function CardItem({
             <Button variant="ghost" color="brand.green">
               Anmäl intresse
             </Button>
-            <Button
-              variant="solid"
-              color="brand.green"
-              onClick={() => handleDelete(dog._id)}
-            >
-              Ta bort
-            </Button>
+
+            {user && (
+              <Button
+                variant="solid"
+                color="brand.green"
+                onClick={() => handleDelete(dog._id)}
+              >
+                Ta bort
+              </Button>
+            )}
           </ButtonGroup>
         </CardFooter>
       </Card>

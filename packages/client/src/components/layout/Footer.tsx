@@ -32,8 +32,8 @@ export default function Footer() {
                 <BreadcrumbLink href="#">Följ</BreadcrumbLink>
               </BreadcrumbItem>
 
-              <BreadcrumbItem isCurrentPage>
-                <Link href="/admin">Admin</Link>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="#">Mer</BreadcrumbLink>
               </BreadcrumbItem>
 
               <LoginModal />
