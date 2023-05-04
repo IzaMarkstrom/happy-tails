@@ -60,6 +60,14 @@ export default function ListPage() {
     }
   };
 
+  const removeItem = (_id: string) => {
+    try {
+      axios.delete(`${API_ENDPOINT}/dog/${_id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, [url]);
@@ -98,7 +106,7 @@ export default function ListPage() {
         >
           {state.data &&
             state.data.map((dog) => {
-              return <CardItem dog={dog} />;
+              return <CardItem dog={dog} removeItem={removeItem} />;
             })}
         </SimpleGrid>
       )}

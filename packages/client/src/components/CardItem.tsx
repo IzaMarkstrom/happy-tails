@@ -20,8 +20,19 @@ import {
 } from "@chakra-ui/react";
 import { Dog } from "@happy-tails/shared";
 
-export default function CardItem({ dog }: { dog: Dog }) {
+export default function CardItem({
+  dog,
+  removeItem,
+}: {
+  dog: Dog;
+  removeItem: Function;
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleDelete = (_id: string) => {
+    console.log("delete", _id);
+    removeItem(dog._id);
+  };
   return (
     <>
       <Card maxW="sm">
@@ -49,7 +60,11 @@ export default function CardItem({ dog }: { dog: Dog }) {
             <Button variant="ghost" color="brand.green">
               Anmäl intresse
             </Button>
-            <Button variant="solid" color="brand.green">
+            <Button
+              variant="solid"
+              color="brand.green"
+              onClick={() => handleDelete(dog._id)}
+            >
               Ta bort
             </Button>
           </ButtonGroup>
