@@ -49,6 +49,9 @@ export default function CardItem({ dog }: { dog: Dog }) {
             <Button variant="ghost" color="brand.green">
               Anmäl intresse
             </Button>
+            <Button variant="solid" color="brand.green">
+              Ta bort
+            </Button>
           </ButtonGroup>
         </CardFooter>
       </Card>
