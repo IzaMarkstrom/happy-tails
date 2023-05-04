@@ -22,9 +22,8 @@ userRouter.post(
       try {
         const newUser = await saveUser(req.body);
         if (newUser) {
-          const userInfo = await getUserByEmail(newUser.email);
           const token = await generateToken(newUser.email);
-          res.status(200).send({ token, userInfo });
+          res.status(200).send({ token });
         } else {
           res.status(400).send("Something went wrong. Please try again.");
         }
