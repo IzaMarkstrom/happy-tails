@@ -17,6 +17,7 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  Alert,
 } from "@chakra-ui/react";
 import { Dog } from "@happy-tails/shared";
 
@@ -28,10 +29,12 @@ export default function CardItem({
   removeItem: Function;
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [sucess, setSucess] = React.useState(false);
 
   const handleDelete = (_id: string) => {
     console.log("delete", _id);
     removeItem(dog._id);
+    setSucess(true);
   };
   return (
     <>
@@ -48,7 +51,7 @@ export default function CardItem({
           </Stack>
         </CardBody>
         <CardFooter>
-          <ButtonGroup spacing="2">
+          <ButtonGroup spacing="">
             <Button
               variant="solid"
               bg="brand.primary"
@@ -70,6 +73,12 @@ export default function CardItem({
           </ButtonGroup>
         </CardFooter>
       </Card>
+
+      {sucess && (
+        <Text color="brand.green" mt="4">
+          Borttagen!
+        </Text>
+      )}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
