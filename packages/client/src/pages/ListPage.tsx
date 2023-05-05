@@ -104,7 +104,9 @@ export default function ListPage() {
         >
           {state.data &&
             state.data.map((dog) => {
-              return <CardItem dog={dog} removeItem={removeItem} />;
+              return (
+                <CardItem key={dog._id} dog={dog} removeItem={removeItem} />
+              );
             })}
         </SimpleGrid>
       )}
