@@ -18,7 +18,12 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
-  Alert,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverArrow,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
 import { Dog } from "@happy-tails/shared";
 
@@ -30,13 +35,11 @@ export default function CardItem({
   removeItem: Function;
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [sucess, setSucess] = React.useState(false);
   const { user } = useContext(UserContext);
 
-  const handleDelete = (_id: string) => {
+  const handleDelete = async (_id: string) => {
     console.log("delete", _id);
-    removeItem(dog._id);
-    setSucess(true);
+    await removeItem(dog._id);
   };
   return (
     <>
@@ -68,24 +71,27 @@ export default function CardItem({
               </Button>
 
               {user && (
-                <Button
-                  variant="solid"
-                  color="brand.green"
-                  onClick={() => handleDelete(dog._id)}
-                >
-                  Ta bort
-                </Button>
+                <Popover>
+                  <PopoverTrigger>
+                    <Button
+                      variant="solid"
+                      color="brand.green"
+                      onClick={() => handleDelete(dog._id)}
+                    >
+                      Ta bort
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Hunden borttagen</PopoverHeader>
+                  </PopoverContent>
+                </Popover>
               )}
             </ButtonGroup>
           </Stack>
         </CardFooter>
       </Card>
-
-      {sucess && (
-        <Text color="brand.green" mt="4">
-          Borttagen!
-        </Text>
-      )}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
