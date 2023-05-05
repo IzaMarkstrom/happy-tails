@@ -25,7 +25,14 @@ export default function Header() {
         <Text color="white" fontSize="6xl" fontWeight="extrabold">
           Hundar söker hem
         </Text>
-        <Button color="brand.primary">Adoptera hund</Button>
+        <Text fontSize="md" pb={18}>
+          Är du intresserad av att adoptera en hund? Här kan du se vilka hundar
+          som söker hem just nu.
+        </Text>
+
+        <Button color="brand.primary">
+          <a href="#dogs"> Våra hundar </a>
+        </Button>
       </Box>
     </Box>
   );

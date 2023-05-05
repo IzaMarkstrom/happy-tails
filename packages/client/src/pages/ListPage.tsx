@@ -84,7 +84,7 @@ export default function ListPage() {
   };
 
   return (
-    <Box height="100vh">
+    <Box height="100vh" id="dogs">
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
