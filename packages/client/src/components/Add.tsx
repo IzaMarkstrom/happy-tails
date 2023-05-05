@@ -19,12 +19,12 @@ import UserContext from "../context/UserContext";
 
 export default function Add() {
   const [name, setName] = useState<string>("");
-  const [age, setAge] = useState<number>();
+  const [age, setAge] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string[]>([]);
   const [gender, setGender] = useState<string>("");
   const [breed, setBreed] = useState<string>("");
-  const [adoptionPrice, setAdoptionPrice] = useState<number>();
+  const [adoptionPrice, setAdoptionPrice] = useState<number>(0);
   const [neutered, setNeutered] = useState<string>("");
   const [mainImage, setMainImage] = useState<File | null>(null);
 
@@ -36,7 +36,17 @@ export default function Add() {
 
   const addNewDog = () => {
     axios
-      .post(`${baseURL}/api/dog`, { name, description })
+      .post(`${baseURL}/api/dog`, {
+        name,
+        age,
+        description,
+        category,
+        gender,
+        breed,
+        adoptionPrice,
+        neutered,
+        mainImage,
+      })
       .then((res) => {
         console.log(res);
       })
@@ -44,6 +54,16 @@ export default function Add() {
         console.log(error);
       });
   };
+
+  //   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const file = e.target.files && e.target.files[0];
+  //     if (file) {
+  //       const imageUrl = URL.createObjectURL(file);
+  //       setMainImage({ url: imageUrl, alt: "Dog Image" });
+  //     } else {
+  //       setMainImage(undefined);
+  //     }
+  //   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     addNewDog();
