@@ -36,8 +36,10 @@ dogRouter.get("/search/:searchTerm", async (req: Request, res: Response) => {
 
 dogRouter.post("/", async (req: Request, res: Response) => {
   try {
-    const dog = req.body;
-    res.status(200).send(await saveNewDog(dog));
+    const inputDog: Dog = req.body;
+    const newDog = await saveNewDog(inputDog);
+    console.log(newDog);
+    res.status(200).send(newDog);
   } catch (error) {
     res.status(500).send("Something went went wrong");
   }

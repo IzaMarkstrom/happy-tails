@@ -37,9 +37,6 @@ export default function Navbar() {
           <Button bg="white" color="brand.beige">
             Om oss
           </Button>
-          <Button bg="white" color="brand.beige">
-            Stöd
-          </Button>
         </Flex>
         <IconButton
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -57,12 +54,9 @@ export default function Navbar() {
             </Button>
             <Button bgColor="white" w="full">
               <a href="/donation">Donation</a>
-          </Button>
-            <Button bgColor="white" w="full">
-              Om oss
             </Button>
             <Button bgColor="white" w="full">
-              Stöd
+              Om oss
             </Button>
           </VStack>
         </Box>
