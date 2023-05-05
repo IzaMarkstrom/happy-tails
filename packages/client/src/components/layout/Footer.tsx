@@ -7,6 +7,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import LoginModal from "../LoginModal";
+import LogoutButton from "../LogoutButton";
 
 export default function Footer() {
   return (
@@ -37,6 +38,7 @@ export default function Footer() {
               </BreadcrumbItem>
 
               <LoginModal />
+              <LogoutButton/>
             </Breadcrumb>
           </Box>
         </Flex>
