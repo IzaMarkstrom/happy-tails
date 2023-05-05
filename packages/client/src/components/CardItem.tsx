@@ -53,29 +53,31 @@ export default function CardItem({
           </Stack>
         </CardBody>
         <CardFooter>
-          <ButtonGroup spacing="">
-            <Button
-              variant="solid"
-              bg="brand.primary"
-              color="white"
-              onClick={onOpen}
-            >
-              Mer info
-            </Button>
-            <Button variant="ghost" color="brand.green">
-              Anmäl intresse
-            </Button>
-
-            {user && (
+          <Stack spacing={2} align="center">
+            <ButtonGroup spacing="">
               <Button
                 variant="solid"
-                color="brand.green"
-                onClick={() => handleDelete(dog._id)}
+                bg="brand.primary"
+                color="white"
+                onClick={onOpen}
               >
-                Ta bort
+                Mer info
               </Button>
-            )}
-          </ButtonGroup>
+              <Button variant="ghost" color="brand.green">
+                Ansök
+              </Button>
+
+              {user && (
+                <Button
+                  variant="solid"
+                  color="brand.green"
+                  onClick={() => handleDelete(dog._id)}
+                >
+                  Ta bort
+                </Button>
+              )}
+            </ButtonGroup>
+          </Stack>
         </CardFooter>
       </Card>
 
