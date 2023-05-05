@@ -12,14 +12,14 @@ export default function Search({
   setSearchTerm,
   onSearchInput,
   onSearchSubmit,
-  onClick,
+  clearResults,
   handleClick
 }: {
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
   onSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  onClick: () => void;
+  clearResults: () => void;
   handleClick: (path: string) => void;
 }) {
   return (
@@ -45,7 +45,7 @@ export default function Search({
               color="brand.primary"
               size="md"
               borderRadius="1px"
-              onClick={onClick}
+              onClick={clearResults}
             >
               Sök
             </Button>
@@ -53,7 +53,7 @@ export default function Search({
               color="brand.primary"
               size="md"
               borderRadius="1px"
-              onClick={onClick}
+              onClick={clearResults}
             >
               X
             </Button>
@@ -63,25 +63,25 @@ export default function Search({
       <Box mt={4}>
         <Button 
           mr={2}
-          onClick={ () => handleClick("long-hair")}
+          onClick={ () => handleClick(`long-hair`)}
           >
           Långhårig
         </Button>
         <Button 
           mr={2}
-          onClick={ () => handleClick("short-hair")}
+          onClick={ () => handleClick(`short-hair`)}
           >
           Korthårig
         </Button>
         <Button 
           mr={2}
-          onClick={ () => handleClick("big-dog")}
+          onClick={ () => handleClick(`big-dog`)}
           >
           Stor hund
         </Button>
         <Button 
           mr={2}
-          onClick={ () => handleClick("small-dog")}
+          onClick={ () => handleClick(`small-dog`)}
           >
           Liten hund
         </Button>

@@ -64,19 +64,21 @@ export default function ListPage() {
     fetchData();
   }, [url]);
 
+  useEffect(() => {
+    fetchData();
+  }, [searchTerm]);
+
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   const handleClick = (category: string) => {
     setSearchTerm(category);
-    handleCategorySubmit();
-    // setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
+    handleCategorySubmit()
   };
   
   const handleCategorySubmit = () => {
     setUrl(`${API_ENDPOINT}/dog/search/${searchTerm}`);
-    console.log(searchTerm)
   };
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -95,7 +97,7 @@ export default function ListPage() {
         setSearchTerm={setSearchTerm}
         onSearchInput={handleSearchInput}
         onSearchSubmit={handleSearchSubmit}
-        onClick={clearResults}
+        clearResults={clearResults}
         handleClick={handleClick}
       />
 
@@ -110,7 +112,7 @@ export default function ListPage() {
         >
           {state.data &&
             state.data.map((dog) => {
-              return <CardItem dog={dog} />;
+              return <CardItem dog={dog} /> ;
             })}
         </SimpleGrid>
       )}
