@@ -2,8 +2,9 @@ import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
 import CardItem from "../components/CardItem";
-import { SimpleGrid, Box } from "@chakra-ui/react";
+import { SimpleGrid, Box, VStack } from "@chakra-ui/react";
 import Search from "../components/Search";
+import Add from "../components/Add";
 
 const API_ENDPOINT = "http://localhost:4000/api";
 
@@ -84,14 +85,17 @@ export default function ListPage() {
   };
 
   return (
-    <Box height="100vh" id="dogs">
-      <Search
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        onSearchInput={handleSearchInput}
-        onSearchSubmit={handleSearchSubmit}
-        onClick={clearResults}
-      />
+    <Box height="100vh">
+      <VStack mt="6" spacing="3" justifyContent="center">
+        <Search
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          onSearchInput={handleSearchInput}
+          onSearchSubmit={handleSearchSubmit}
+          onClick={clearResults}
+        />
+        <Add />
+      </VStack>
 
       {state.isError && <div>Something went wrong ...</div>}
       {state.isLoading ? (

@@ -34,14 +34,20 @@ dogRouter.get("/search/:searchTerm", async (req: Request, res: Response) => {
   }
 });
 
-dogRouter.post("/", async (req: Request, res: Response) => {
+interface MulterRequest extends Request {
+  file: any;
+}
+
+dogRouter.post("/", async (req: Request, res: Response<Dog[]>) => {
+  const dog = req.body;
+  const imagesMulter = (req as MulterRequest).file;
   try {
-    const inputDog: Dog = req.body;
-    const newDog = await saveNewDog(inputDog);
-    console.log(newDog);
-    res.status(200).send(newDog);
-  } catch (error) {
-    res.status(500).send("Something went went wrong");
+    dog.mainImage = {
+      url: `http://localhost:4000/${imagesMulter.path}`,
+    };
+    res.send(await saveNewDog(req.body));
+  } catch (e) {
+    res.sendStatus(400);
   }
 });
 
