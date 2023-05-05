@@ -36,17 +36,25 @@ export default function Add() {
 
   const addNewDog = () => {
     axios
-      .post(`${baseURL}/api/dog`, {
-        name,
-        age,
-        description,
-        category,
-        gender,
-        breed,
-        adoptionPrice,
-        neutered,
-        mainImage,
-      })
+      .post(
+        `${baseURL}/api/dog`,
+        {
+          name,
+          age,
+          description,
+          category,
+          gender,
+          breed,
+          adoptionPrice,
+          neutered,
+          mainImage,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
       })
@@ -55,18 +63,8 @@ export default function Add() {
       });
   };
 
-  //   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     const file = e.target.files && e.target.files[0];
-  //     if (file) {
-  //       const imageUrl = URL.createObjectURL(file);
-  //       setMainImage({ url: imageUrl, alt: "Dog Image" });
-  //     } else {
-  //       setMainImage(undefined);
-  //     }
-  //   };
-
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    addNewDog();
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    await addNewDog();
     onClose();
     window.location.reload();
   };
