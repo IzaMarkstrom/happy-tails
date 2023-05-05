@@ -35,7 +35,7 @@ export default function Navbar() {
             <a href="/donation">Donation</a>
           </Button>
           <Button bg="white" color="brand.beige">
-            Om oss
+            <a href="#about">Om oss</a>
           </Button>
         </Flex>
         <IconButton
