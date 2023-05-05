@@ -67,7 +67,7 @@ export default function CardItem({
                 Mer info
               </Button>
               <Button variant="ghost" color="brand.green">
-                Ansök
+                <a href="/application-form">Ansök</a>
               </Button>
 
               {user && (

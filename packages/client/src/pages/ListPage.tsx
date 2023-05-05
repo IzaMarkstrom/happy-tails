@@ -96,6 +96,7 @@ export default function ListPage() {
         />
         <Add />
       </VStack>
+
       {state.isError && <div>Something went wrong ...</div>}
       {state.isLoading ? (
         <div>Loading ...</div>
