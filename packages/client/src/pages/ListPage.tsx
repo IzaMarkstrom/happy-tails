@@ -83,6 +83,11 @@ export default function ListPage() {
     dispatch({ type: "CLEAR" });
   };
 
+  const handleSearchCategory = (searchCategory: string) => {
+    setUrl(`${API_ENDPOINT}/dog/search/${searchCategory}`);
+    console.log(url);
+  };
+
   return (
     <Box height="100vh" id="dogs">
       <Search
@@ -91,6 +96,7 @@ export default function ListPage() {
         onSearchInput={handleSearchInput}
         onSearchSubmit={handleSearchSubmit}
         onClick={clearResults}
+        handleSearchCategory={handleSearchCategory}
       />
 
       {state.isError && <div>Something went wrong ...</div>}
