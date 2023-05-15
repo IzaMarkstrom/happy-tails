@@ -32,6 +32,9 @@ export default function Navbar() {
             <a href="/dogs">Hundarna</a>
           </Button>
           <Button bg="white" color="brand.beige">
+            <a href="/application-form">Ansökan</a>
+          </Button>
+          <Button bg="white" color="brand.beige">
             <a href="/donation">Donation</a>
           </Button>
           <Button bg="white" color="brand.beige">
@@ -51,6 +54,9 @@ export default function Navbar() {
           <VStack alignItems="flex-start" spacing="4">
             <Button bgColor="white" w="full">
               <a href="/dogs">Hundarna</a>
+            </Button>
+            <Button bgColor="white" w="full">
+              <a href="/application-form">Ansökan</a>
             </Button>
             <Button bgColor="white" w="full">
               <a href="/donation">Donation</a>
