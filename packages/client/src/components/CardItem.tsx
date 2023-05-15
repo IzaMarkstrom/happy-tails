@@ -38,7 +38,6 @@ export default function CardItem({
   const { user } = useContext(UserContext);
 
   const handleDelete = async (_id: string) => {
-    console.log("delete", _id);
     await removeItem(dog._id);
   };
   return (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Heading,
@@ -8,7 +8,7 @@ import {
   Input,
   Textarea,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 interface ContactForm {
   name: string;
@@ -17,21 +17,21 @@ interface ContactForm {
 }
 
 export default function Contact() {
-
   const [formData, setFormData] = useState<ContactForm>({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
     // You can add your own logic here to submit the form data to your backend or send an email
   };
 
@@ -41,51 +41,52 @@ export default function Contact() {
         <Heading as="h1" size="2xl" textAlign="center" color="white">
           Kontakta oss
         </Heading>
-        <Box  bgColor="white" p={10} borderRadius="10px" width="85%">
-        <form onSubmit={handleSubmit}>
-          <FormControl isRequired>
-            <FormLabel htmlFor="name">Namn</FormLabel>
-            <Input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Skriv in ditt namn"
-            />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel htmlFor="email">Email</FormLabel>
-            <Input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Skriv in din email"
-            />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel htmlFor="message">Meddelande</FormLabel>
-            <Textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Skriv in ditt meddelande"
-            />
-          </FormControl>
-          <Button type="submit" 
-                variant="solid"
-                bg="brand.primary"
-                color="white"
-                mt={4}>
-            Skicka
-          </Button>
-        </form>
+        <Box bgColor="white" p={10} borderRadius="10px" width="85%">
+          <form onSubmit={handleSubmit}>
+            <FormControl isRequired>
+              <FormLabel htmlFor="name">Namn</FormLabel>
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Skriv in ditt namn"
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Skriv in din email"
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="message">Meddelande</FormLabel>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Skriv in ditt meddelande"
+              />
+            </FormControl>
+            <Button
+              type="submit"
+              variant="solid"
+              bg="brand.primary"
+              color="white"
+              mt={4}
+            >
+              Skicka
+            </Button>
+          </form>
         </Box>
       </VStack>
     </Box>
   );
-
-};
+}

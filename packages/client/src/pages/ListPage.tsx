@@ -86,7 +86,6 @@ export default function ListPage() {
 
   const handleSearchCategory = (searchCategory: string) => {
     setUrl(`${API_ENDPOINT}/dog/search/${searchCategory}`);
-    console.log(url);
   };
 
   return (
