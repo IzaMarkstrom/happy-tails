@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   InputGroup,
   Input,
   InputRightElement,
   Box,
+  Stack,
 } from "@chakra-ui/react";
 
 export default function Search({
-  searchTerm,
-  setSearchTerm,
   onSearchInput,
   onSearchSubmit,
   onClick,
+  handleSearchCategory,
 }: {
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
   onSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onClick: () => void;
+  handleSearchCategory: (searchCategory: string) => void;
 }) {
   return (
     <Box
@@ -57,6 +58,20 @@ export default function Search({
           </InputRightElement>
         </InputGroup>
       </form>
+      <Stack direction="row" spacing={4} align="center" pt="2">
+        <Button size="xs" onClick={() => handleSearchCategory("big%20dog")}>
+          Stor
+        </Button>
+        <Button size="xs" onClick={() => handleSearchCategory("small%20dog")}>
+          Liten
+        </Button>
+        <Button size="xs" onClick={() => handleSearchCategory("long%20hair")}>
+          Långhårig
+        </Button>
+        <Button size="xs" onClick={() => handleSearchCategory("short%20hair")}>
+          Korthårig
+        </Button>
+      </Stack>
     </Box>
   );
 }
