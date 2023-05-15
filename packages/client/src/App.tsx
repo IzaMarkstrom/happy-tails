@@ -5,6 +5,7 @@ import ApplicationPage from "./pages/ApplicationPage";
 import StartPage from "./pages/StartPage";
 import ListPage from "./pages/ListPage";
 import DonationPage from "./pages/DonationPage";
+import ContactPage from "./pages/ContactPage";
 import { UserContextProvider } from "./context/UserContext";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/application-form" element={<ApplicationPage />} />
           <Route path="/dogs" element={<ListPage />} />
           <Route path="/donation" element={<DonationPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
       </div>

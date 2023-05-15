@@ -2,8 +2,9 @@ import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import { Dog } from "@happy-tails/shared";
 import CardItem from "../components/CardItem";
-import { SimpleGrid, Box } from "@chakra-ui/react";
+import { SimpleGrid, Box, VStack } from "@chakra-ui/react";
 import Search from "../components/Search";
+import Add from "../components/Add";
 
 const API_ENDPOINT = "http://localhost:4000/api";
 

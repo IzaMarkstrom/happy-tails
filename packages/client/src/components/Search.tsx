@@ -27,7 +27,6 @@ export default function Search({
       alignItems="center"
       flexDirection="column"
       justifyContent="center"
-      pt="4.5rem"
     >
       <form onSubmit={onSearchSubmit}>
         <InputGroup size="md">

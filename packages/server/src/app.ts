@@ -14,7 +14,6 @@ app.use(json());
 
 const port: number = parseInt(process.env.SERVER_PORT || "4000");
 
-// image will upload to uploads folder locally, not to db yet
 const storage = multer.diskStorage({
   destination: "uploads",
   filename: (
@@ -27,6 +26,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+app.use(upload.single("mainImage"));
 app.use("/uploads", express.static("./uploads"));
 
 app.use("/api/dog", dogRouter);
