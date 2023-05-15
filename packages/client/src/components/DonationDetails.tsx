@@ -29,7 +29,7 @@ export default function DonationDetails(props: { value: number }) {
             </Text>
             <Button justifySelf="center" alignSelf="center" size={isMobile ? "sm" : "lg"} variant="solid"
               bg="brand.primary"
-              color="white">Donate</Button>
+              color="white">Donera</Button>
         </Box>
     </>
   )
