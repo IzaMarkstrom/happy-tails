@@ -34,7 +34,11 @@ cd happy-tails
 npm install
 ```
 
-3. Add an .env file and provide the necessary environment variables (MongoDB connection string, server port)
+3. Add an .env file and provide the necessary environment variables
+
+   - MongoDB url
+   - Server port
+   - Secret token
 
 4. Seed data to the database with the following script:
 
