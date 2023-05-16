@@ -59,16 +59,16 @@ export default function Search({
         </InputGroup>
       </form>
       <Stack direction="row" spacing={4} align="center" pt="2">
-        <Button size="xs" onClick={() => handleSearchCategory("big%20dog")}>
+        <Button size="xs" onClick={() => handleSearchCategory("stor%20hund")}>
           Stor
         </Button>
-        <Button size="xs" onClick={() => handleSearchCategory("small%20dog")}>
+        <Button size="xs" onClick={() => handleSearchCategory("liten%20hund")}>
           Liten
         </Button>
-        <Button size="xs" onClick={() => handleSearchCategory("long%20hair")}>
+        <Button size="xs" onClick={() => handleSearchCategory("långt%20hår")}>
           Långhårig
         </Button>
-        <Button size="xs" onClick={() => handleSearchCategory("short%20hair")}>
+        <Button size="xs" onClick={() => handleSearchCategory("kort%20hår")}>
           Korthårig
         </Button>
       </Stack>

@@ -98,16 +98,16 @@ export default function CardItem({
           <ModalHeader>{dog.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <p>Age: {dog.age}</p>
-            <p>Adoption price: {dog.adoptionPrice}</p>
-            <p>Breed: {dog.breed}</p>
-            <p>Gender: {dog.gender}</p>
-            <p>Neutered: {dog.neutered}</p>
+            <p>Ålder: {dog.age}</p>
+            <p>Adoptionspris: {dog.adoptionPrice}</p>
+            <p>Ras: {dog.breed}</p>
+            <p>Kön: {dog.gender}</p>
+            <p>Kastrerad: {dog.neutered}</p>
           </ModalBody>
 
           <ModalFooter>
             <Button bg="brand.beige" color="white" mr={3} onClick={onClose}>
-              Close
+              Stäng
             </Button>
           </ModalFooter>
         </ModalContent>

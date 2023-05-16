@@ -31,13 +31,13 @@ export default function DonationPage() {
                 _selected={{ color: "brand.dark", bg: "white" }}
                 fontSize={isMobile ? "l" : "2xl"}
               >
-                Single
+                Engångs
               </Tab>
               <Tab
                 _selected={{ color: "brand.dark", bg: "white" }}
                 fontSize={isMobile ? "l" : "2xl"}
               >
-                Monthly
+                Månadsvis
               </Tab>
             </TabList>
 
