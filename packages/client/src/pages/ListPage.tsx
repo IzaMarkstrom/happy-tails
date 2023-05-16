@@ -86,19 +86,21 @@ export default function ListPage() {
 
   const handleSearchCategory = (searchCategory: string) => {
     setUrl(`${API_ENDPOINT}/dog/search/${searchCategory}`);
-    console.log(url);
   };
 
   return (
-    <Box height="100vh" id="dogs">
-      <Search
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        onSearchInput={handleSearchInput}
-        onSearchSubmit={handleSearchSubmit}
-        onClick={clearResults}
-        handleSearchCategory={handleSearchCategory}
-      />
+    <Box height="100vh">
+      <VStack mt="6" spacing="3" justifyContent="center">
+        <Search
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          onSearchInput={handleSearchInput}
+          onSearchSubmit={handleSearchSubmit}
+          onClick={clearResults}
+          handleSearchCategory={handleSearchCategory}
+        />
+        <Add />
+      </VStack>
 
       {state.isError && <div>Something went wrong ...</div>}
       {state.isLoading ? (
