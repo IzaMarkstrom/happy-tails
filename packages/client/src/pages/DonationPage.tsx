@@ -12,8 +12,8 @@ export default function DonationPage() {
         <Box w={isMobile ? "100%" : "70%"} pt={isMobile ? 2 : 10}>
             <Tabs isFitted variant='enclosed' align="center">
                 <TabList>
-                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "l" : "2xl"}>Single</Tab>
-                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "l" : "2xl"}>Monthly</Tab>
+                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "l" : "2xl"}>Bidra en gång</Tab>
+                    <Tab _selected={{ color: 'brand.dark', bg: 'white' }} fontSize={isMobile ? "l" : "2xl"}>Månadsgivare</Tab>
                 </TabList>
 
                 <TabPanels>
